@@ -1,12 +1,14 @@
 package org.osrsxp
 
-import org.junit.Assert.assertEquals
 import org.junit.Test
-import org.osrsxp.AccountService
+import com.google.gson.GsonBuilder
 
 class AccountTest {
-    @Test fun testFindAccount() {
-        // TODO actually do things
-        AccountService().find("sparc mac")
+    @Test
+    fun testFindAccount() {
+        // TODO do actual testing
+        val account = AccountService().find("arid meme")
+        val gson = GsonBuilder().setPrettyPrinting().create()
+        println(gson.toJson(account))
     }
 }
