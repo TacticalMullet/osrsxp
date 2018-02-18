@@ -1,3 +1,14 @@
 package org.osrsxp
 
-class Account(val accountName: String, val skills: List<Skill>) {}
+/**
+ * ## Account
+ * Builds a list of [Skill] upon initialization
+ *
+ * @param accountName osrs account name
+ */
+class Account(accountName: String) {
+    var skills = emptyList<Skill>()
+    init {
+        this.skills = AccountService().findAccountInfo(accountName)
+    }
+}

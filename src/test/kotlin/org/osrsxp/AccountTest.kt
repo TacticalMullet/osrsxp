@@ -6,8 +6,8 @@ import com.google.gson.GsonBuilder
 class AccountTest {
     @Test
     fun testFindAccount() {
-        // TODO do actual testing
-        val account = AccountService().find("arid meme")
+        // TODO actual testing
+        val account = Account("lynx titan")
         val gson = GsonBuilder().setPrettyPrinting().create()
         println(gson.toJson(account))
     }
