@@ -1,7 +1,8 @@
-package org.osrsxp
+package com.osrsxp
 
 import org.junit.Test
 import com.google.gson.GsonBuilder
+import com.osrsxp.account.Account
 
 class AccountTest {
     @Test

@@ -1,4 +1,6 @@
-package org.osrsxp
+package com.osrsxp.account
+
+import com.osrsxp.skill.Skill
 
 /**
  * ## Account

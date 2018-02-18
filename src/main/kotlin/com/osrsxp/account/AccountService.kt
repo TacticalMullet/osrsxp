@@ -1,5 +1,7 @@
-package org.osrsxp
+package com.osrsxp.account
 
+import com.osrsxp.skill.Skill
+import com.osrsxp.skill.SkillMap
 import khttp.get
 import org.osrsxp.exception.AccountNotFoundException
 

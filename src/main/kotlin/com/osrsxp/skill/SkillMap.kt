@@ -1,4 +1,4 @@
-package org.osrsxp
+package com.osrsxp.skill
 
 /**
  * Use to map API values to their actual skill values.
