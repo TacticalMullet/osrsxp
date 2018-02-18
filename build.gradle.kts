@@ -1,6 +1,7 @@
 plugins {
     kotlin("jvm") version "1.2.21" 
     idea
+    maven
 }
 
 repositories {
