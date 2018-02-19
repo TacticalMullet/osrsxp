@@ -21,5 +21,5 @@ enum class SkillMap(val skill: String, val rankIndex: Int, val levelIndex: Int, 
     FARMING("Farming",42, 43, 44),
     RUNECRAFTING("Runecraft",45, 46, 47),
     HUNTER("Hunter",48, 49, 50),
-    CONSTRUCTION("Construction",51, 52, 53),
+    CONSTRUCTION("Construction",51, 52, 53)
 }
