@@ -11,18 +11,18 @@ sudo docker exec -it $PG_NAME bash -c "psql -U $PG_USER -c 'CREATE DATABASE osrs
 sudo docker exec -it $PG_NAME bash -c "psql -U $PG_USER osrsxp -c ' \
     CREATE TABLE account( \
         id SERIAL PRIMARY KEY, \
-        account_name VARCHAR(24), \
+        name VARCHAR(24), \
         created_dt TIMESTAMP DEFAULT current_timestamp \
     );'"
 
 sudo docker exec -it $PG_NAME bash -c "psql -U $PG_USER osrsxp -c '
     CREATE TABLE skillxp( \
         id SERIAL PRIMARY KEY, \
-        account_id INT REFERENCES account (id), \
         name VARCHAR(24), \
         rank BIGINT, \
         level INT, \
-        xp BIGINT \
+        xp BIGINT, \
+        account_id INT REFERENCES account (id) \
     );'"
 
 
