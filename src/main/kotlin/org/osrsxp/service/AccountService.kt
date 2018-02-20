@@ -2,6 +2,7 @@ package org.osrsxp
 
 import khttp.get
 import org.osrsxp.exception.AccountNotFoundException
+import org.osrsxp.service.Skill
 
 const val OK: Int = 200
 

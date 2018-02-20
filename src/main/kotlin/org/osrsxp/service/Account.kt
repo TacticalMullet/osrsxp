@@ -1,4 +1,6 @@
-package org.osrsxp
+package org.osrsxp.service
+
+import org.osrsxp.AccountService
 
 /**
  * ## Account
