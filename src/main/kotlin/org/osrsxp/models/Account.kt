@@ -1,4 +1,6 @@
-package org.osrsxp
+package org.osrsxp.models
+
+import org.osrsxp.service.AccountService
 
 /**
  * ## Account

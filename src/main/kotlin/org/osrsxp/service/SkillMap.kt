@@ -1,4 +1,4 @@
-package org.osrsxp
+package org.osrsxp.service
 
 /**
  * Use to map API values to their actual skill values.

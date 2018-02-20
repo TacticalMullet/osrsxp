@@ -1,6 +1,7 @@
-package org.osrsxp
+package org.osrsxp.service
 
 import khttp.get
+import org.osrsxp.models.Skill
 import org.osrsxp.exception.AccountNotFoundException
 
 const val OK: Int = 200
