@@ -2,7 +2,7 @@ package org.osrsxp
 
 import org.junit.Test
 import com.google.gson.GsonBuilder
-import org.osrsxp.models.Account
+import org.osrsxp.service.Account
 
 class AccountTest {
     @Test
