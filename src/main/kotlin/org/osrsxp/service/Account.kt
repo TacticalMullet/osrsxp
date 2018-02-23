@@ -8,6 +8,7 @@ package org.osrsxp.service
  */
 class Account(accountName: String) {
     var skills = emptyList<Skill>()
+    var accountName = accountName
     init {
         this.skills = AccountService().findAccountInfo(accountName)
     }

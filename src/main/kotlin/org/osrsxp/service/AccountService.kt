@@ -26,7 +26,7 @@ class AccountService {
 
     fun buildSkillset(stats: List<Long>): List<Skill> {
         return SkillMap.values().map {
-            Skill(it.name, stats[it.rankIndex], stats[it.levelIndex], stats[it.xpIndex])
+            Skill(it.name, stats[it.rankIndex], stats[it.levelIndex].toInt(), stats[it.xpIndex])
         }
     }
 }
