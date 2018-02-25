@@ -2,7 +2,7 @@
 
 PG_USER=osrsxp
 PG_NAME=osrsxp_pg
-DOCKER=sudo docker
+DOCKER="sudo docker"
 
 $DOCKER run -d --name $PG_NAME -p 5432:5432 postgres
 sleep 2
