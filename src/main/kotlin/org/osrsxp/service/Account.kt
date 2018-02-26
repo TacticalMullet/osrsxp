@@ -7,9 +7,11 @@ package org.osrsxp.service
  * @param accountName osrs account name
  */
 class Account(accountName: String) {
+    constructor(accountName: String, skills: List<Skill>) : this(accountName)
     var skills = emptyList<Skill>()
     var accountName = accountName
     init {
-        this.skills = AccountService().findAccountInfo(accountName)
+        if (skills.isEmpty())
+            this.skills = AccountService().findAccountInfo(accountName)
     }
 }

@@ -4,6 +4,7 @@ import org.junit.Test
 import com.google.gson.GsonBuilder
 import org.osrsxp.service.Account
 import org.osrsxp.toolkit.ToolKit
+import org.osrsxp.toolkit.service.DBService
 
 class AccountTest {
     @Test
@@ -15,7 +16,12 @@ class AccountTest {
     }
 
     @Test
+    fun testDBService() {
+        DBService().saveAccountData(Account("framed"))
+    }
+
+    @Test
     fun testToolkit() {
-        ToolKit().findUserInfo(Account("framed"))
+        ToolKit().main()
     }
 }

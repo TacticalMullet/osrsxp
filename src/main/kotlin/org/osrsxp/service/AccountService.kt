@@ -20,6 +20,10 @@ class AccountService {
         return buildSkillset(stats)
     }
 
+//    fun findAccountInfoMultiple(accountNames: List<String>) : List<Account>{
+//        //TODO do this
+//    }
+
     private fun encodeName(accountName: String): String {
         return accountName.replace("\\s+".toRegex(), "%20")
     }

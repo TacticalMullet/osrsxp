@@ -2,6 +2,7 @@ plugins {
     kotlin("jvm") version "1.2.21" 
     idea
     maven
+    application
 }
 
 repositories {
@@ -20,3 +21,6 @@ dependencies {
     compile("com.natpryce:konfig:version=1.6.2.1")
 }
 
+application {
+    mainClassName = "org.osrsxp.toolkit.ToolKit"
+}
