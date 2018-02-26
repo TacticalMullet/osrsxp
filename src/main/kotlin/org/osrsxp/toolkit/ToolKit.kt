@@ -1,17 +1,18 @@
 package org.osrsxp.toolkit
 
-import org.osrsxp.service.Account
-import org.osrsxp.toolkit.service.DBService
+import org.osrsxp.service.AccountService
 
 object ToolKit {
-    @JvmStatic fun main(args: Array<String>) {
-        refreshAccounts()
+    @JvmStatic
+    fun main(args: Array<String>) {
+        refreshLoop()
     }
 
-    fun refreshAccounts() {
-        val accountNames = DBService().findAllAccountNames()
-        accountNames.forEach {
-            name -> DBService().saveAccountData(Account(name))
+    private fun refreshLoop() {
+        while (true) {
+            println("refreshing accounts")
+            AccountService().refreshStaleAccounts()
+            Thread.sleep(10000)
         }
     }
 }

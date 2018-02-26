@@ -4,6 +4,7 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.StdOutSqlLogger
 import org.jetbrains.exposed.sql.batchInsert
 import org.jetbrains.exposed.sql.transactions.transaction
+import org.joda.time.DateTime
 import org.osrsxp.service.Account
 import org.osrsxp.toolkit.dao.AccountDAO
 import org.osrsxp.toolkit.dao.AccountEntity
@@ -26,6 +27,17 @@ class DBService {
         return accountNames
     }
 
+    fun findAllStaleAccountNames() : List<String> {
+        var accountNames = listOf<String>()
+        transaction {
+            logger.addLogger(StdOutSqlLogger)
+            accountNames = AccountEntity.find {
+                AccountDAO.createdDate.less(DateTime.now().minusMinutes(10))
+            }.map { it.name }
+        }
+        return accountNames
+    }
+
     fun findOrCreateAccountEntity(accountName: String) : AccountEntity {
         var accountEntity: AccountEntity
         try {
@@ -42,7 +54,7 @@ class DBService {
         transaction {
             val accountEntity = findOrCreateAccountEntity(account.accountName)
             logger.addLogger(StdOutSqlLogger)
-            SkillXPDAO.batchInsert(account.skills) { skill ->
+            SkillXPDAO.batchInsert(account.skills!!.asIterable()) { skill ->
                 this[SkillXPDAO.name] = skill.name
                 this[SkillXPDAO.rank] = skill.rank
                 this[SkillXPDAO.level] = skill.level

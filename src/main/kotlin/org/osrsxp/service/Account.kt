@@ -2,16 +2,14 @@ package org.osrsxp.service
 
 /**
  * ## Account
- * Builds a list of [Skill] upon initialization
  *
  * @param accountName osrs account name
+ * @param skills
  */
-class Account(accountName: String) {
-    constructor(accountName: String, skills: List<Skill>) : this(accountName)
-    var skills = emptyList<Skill>()
-    var accountName = accountName
+class Account(accountName: String, var skills: List<Skill>?) {
+    val accountName = accountName
     init {
-        if (skills.isEmpty())
-            this.skills = AccountService().findAccountInfo(accountName)
+        if (skills == null)
+            skills = AccountService().findAccountInfo(accountName)
     }
 }

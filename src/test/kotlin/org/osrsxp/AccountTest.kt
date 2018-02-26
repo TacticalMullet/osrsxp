@@ -10,18 +10,18 @@ class AccountTest {
     @Test
     fun testFindAccount() {
         // TODO actual testing
-        val account = Account("lynx titan")
+        val account = Account("lynx titan", null)
         val gson = GsonBuilder().create()
         println(gson.toJson(account))
     }
 
     @Test
     fun testDBService() {
-        DBService().saveAccountData(Account("framed"))
+        DBService().saveAccountData(Account("framed", null))
     }
 
     @Test
     fun testToolkit() {
-        ToolKit().main()
+        ToolKit.refreshAccounts()
     }
 }
