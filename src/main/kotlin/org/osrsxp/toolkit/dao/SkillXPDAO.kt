@@ -2,7 +2,7 @@ package org.osrsxp.toolkit.dao
 
 import org.jetbrains.exposed.dao.IntIdTable
 
-object SkillXPDAO: IntIdTable("skillxp") {
+object SkillXPDAO : IntIdTable("skillxp") {
     val name = varchar("name", 24)
     val rank = long("rank")
     val level = integer("level")

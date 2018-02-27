@@ -7,7 +7,7 @@ import org.jetbrains.exposed.dao.IntEntityClass
 class AccountEntity(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<AccountEntity>(AccountDAO)
 
-    var name        by AccountDAO.name
+    var name by AccountDAO.name
     var createdDate by AccountDAO.createdDate
 }
 

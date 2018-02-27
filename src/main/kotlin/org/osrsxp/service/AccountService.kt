@@ -42,7 +42,7 @@ class AccountService {
         DBService().findAllAccountNames().map { accountName ->
             "${encodeName(accountName)}".httpGet().responseString { request, response, result ->
                 DBService().saveAccountData(
-                    Account(accountName, buildSkillset(result.get()))
+                        Account(accountName, buildSkillset(result.get()))
                 )
             }
         }

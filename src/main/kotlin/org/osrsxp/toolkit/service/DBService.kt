@@ -19,7 +19,7 @@ class DBService {
                 user = System.getenv("PG_DB_USER"))
     }
 
-    fun findAllAccountNames() : List<String> {
+    fun findAllAccountNames(): List<String> {
         var accountNames = listOf<String>()
         transaction {
             logger.addLogger(StdOutSqlLogger)
@@ -28,25 +28,25 @@ class DBService {
         return accountNames
     }
 
-    fun findAllStaleAccountNames() : List<String> {
+    fun findAllStaleAccountNames(): List<String> {
         var accountNames = listOf<String>()
         transaction {
             logger.addLogger(StdOutSqlLogger)
 
             accountNames = AccountEntity.find {
                 AccountDAO.name.notInList(
-                    (AccountDAO innerJoin SkillXPDAO)
-                        .slice(AccountDAO.name)
-                        .select { (SkillXPDAO.createdDate.greater(DateTime.now().minusMinutes(10))) }
-                        .distinctBy { it.toString() }
-                        .map { it[AccountDAO.name] }
+                        (AccountDAO innerJoin SkillXPDAO)
+                                .slice(AccountDAO.name)
+                                .select { (SkillXPDAO.createdDate.greater(DateTime.now().minusMinutes(10))) }
+                                .distinctBy { it.toString() }
+                                .map { it[AccountDAO.name] }
                 )
             }.map { it.name }
         }
         return accountNames
     }
 
-    fun findOrCreateAccountEntity(accountName: String) : AccountEntity {
+    fun findOrCreateAccountEntity(accountName: String): AccountEntity {
         var accountEntity: AccountEntity
         try {
             accountEntity = AccountEntity.find {
