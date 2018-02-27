@@ -2,6 +2,8 @@ package org.osrsxp.toolkit
 
 import org.osrsxp.service.AccountService
 
+const val SLEEP_TIME:Long = 30000
+
 object ToolKit {
     @JvmStatic
     fun main(args: Array<String>) {
@@ -10,9 +12,9 @@ object ToolKit {
 
     private fun refreshLoop() {
         while (true) {
-            println("refreshing accounts")
+            println("Refreshing Accounts")
             AccountService().refreshStaleAccounts()
-            Thread.sleep(10000)
+            Thread.sleep(SLEEP_TIME)
         }
     }
 }
