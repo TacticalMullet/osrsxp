@@ -3,6 +3,7 @@ package org.osrsxp.toolkit.service
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.StdOutSqlLogger
 import org.jetbrains.exposed.sql.batchInsert
+import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.joda.time.DateTime
 import org.osrsxp.service.Account
@@ -31,8 +32,15 @@ class DBService {
         var accountNames = listOf<String>()
         transaction {
             logger.addLogger(StdOutSqlLogger)
+
             accountNames = AccountEntity.find {
-                AccountDAO.createdDate.less(DateTime.now().minusMinutes(10))
+                AccountDAO.name.notInList(
+                    (AccountDAO innerJoin SkillXPDAO)
+                        .slice(AccountDAO.name)
+                        .select { (SkillXPDAO.createdDate.greater(DateTime.now().minusMinutes(10))) }
+                        .distinctBy { it.toString() }
+                        .map { it[AccountDAO.name] }
+                )
             }.map { it.name }
         }
         return accountNames
@@ -41,7 +49,9 @@ class DBService {
     fun findOrCreateAccountEntity(accountName: String) : AccountEntity {
         var accountEntity: AccountEntity
         try {
-            accountEntity = AccountEntity.find { AccountDAO.name eq accountName }.single()
+            accountEntity = AccountEntity.find {
+                AccountDAO.name eq accountName
+            }.single()
         } catch (e: NoSuchElementException) {
             accountEntity = AccountEntity.new {
                 name = accountName
